@@ -3,10 +3,10 @@ const app = express();
 const session = require("express-session");
 const cors = require("cors");
 const db = require("./config/db");
+const routes = require("./routes");
 require("dotenv").config();
 
 app.use(express.json());
-app.use(cors());
 
 db();
 
@@ -18,6 +18,10 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+// init route main
+routes.use(cors());
+app.use("/api/v1/", routes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
