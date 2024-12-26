@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 
 const chatSchema = new mongoose.Schema({
   sender: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", // Referensi ke koleksi User
     required: true,
   },
   receiver: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", // Referensi ke koleksi User
     required: true,
   },
   message: {
