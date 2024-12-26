@@ -1,9 +1,11 @@
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 
 const authLayout = () => {
   return (
     <div>
-      <h1>Auth Layout</h1>
+      <Link to="/" className="fixed ml-3 top-3">
+        ~=== Back
+      </Link>
       <Outlet />
     </div>
   );
