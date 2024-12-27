@@ -19,9 +19,21 @@ const userSchema = new mongoose.Schema({
     enum: ["admin", "user"],
     default: "user",
   },
+  phone: {
+    type: String,
+    required: true,
+    // default: "08123456789",
+    unique: true,
+  },
+  country: {
+    type: String,
+    required: true,
+    // default: "Indonesia",
+  },
   address: {
     type: String,
-    default: "Jalan Ku belum ada",
+    // default: "Jalan Ku belum ada",
+    required: true,
   },
 });
 

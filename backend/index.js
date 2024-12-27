@@ -1,14 +1,17 @@
 const express = require("express");
-const app = express();
 const session = require("express-session");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const db = require("./config/db");
 const routes = require("./routes");
 require("dotenv").config();
 
-app.use(express.json());
+const app = express();
+routes.use(cors());
 
 db();
+app.use(cors());
+app.use(express.json());
 
 // Konfigurasi Session
 app.use(
@@ -18,6 +21,9 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+// Konfigurasi Body Parser
+app.use(bodyParser.json());
 
 // init route main
 routes.use(cors());

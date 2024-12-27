@@ -1,4 +1,5 @@
 import {
+  Button,
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
@@ -9,7 +10,11 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { useNavigate } from "react-router-dom";
+//api auth
+import { logout } from "../../api/auth";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,9 +23,27 @@ function classNames(...classes) {
 export default function Navbar() {
   //location / navigation
   const location = useLocation();
+  const navigate = useNavigate();
 
   //state login
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  //state name
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    const name = localStorage.getItem("name");
+    if (name) {
+      setName(name);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  //logout
+  const handleLogout = async () => {
+    await logout();
+    localStorage.clear();
+    navigate("/login");
+  };
 
   //navigation
   const navigation = [
@@ -99,6 +122,7 @@ export default function Navbar() {
                   <BellIcon aria-hidden="true" className="size-6" />
                 </button>
 
+                {/* <span>{name}</span> */}
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
@@ -117,31 +141,35 @@ export default function Navbar() {
                     className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                   >
                     <MenuItem>
-                      <a
-                        href="#"
+                      <Link
+                        to="/profile"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                       >
                         Your Profile
-                      </a>
+                      </Link>
                     </MenuItem>
                     <MenuItem>
-                      <a
-                        href="#"
+                      <Link
+                        to="/settings"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                       >
                         Settings
-                      </a>
+                      </Link>
                     </MenuItem>
                     <MenuItem>
-                      <a
-                        href="#"
+                      <Button
+                        onClick={handleLogout}
+                        to="/logout"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                       >
                         Sign out
-                      </a>
+                      </Button>
                     </MenuItem>
                   </MenuItems>
                 </Menu>
+                <span className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-sm font-medium ">
+                  {name}
+                </span>
               </>
             ) : (
               <Link

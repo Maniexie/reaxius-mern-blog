@@ -7,7 +7,8 @@ const generatePassword = require("generate-password");
 // Register
 exports.register = async (req, res) => {
   // tangkap data di postman
-  const { name, email, password } = req.body;
+  const { name, email, password, confirmPassword, phone, country, address } =
+    req.body;
   try {
     // cek apakah email sudah terdaftar
     const existingUser = await User.findOne({ email });
@@ -23,6 +24,11 @@ exports.register = async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      confirmPassword,
+      role: "user",
+      phone,
+      country,
+      address,
     });
 
     // simpan user
@@ -62,6 +68,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    console.log("data email " + email + " password " + password);
     // kirim response berhasil
     res.status(200).json({
       status_code: 200,

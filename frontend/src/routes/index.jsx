@@ -4,8 +4,12 @@ import About from "../pages/About/about";
 import Dashboard from "../pages/Dashboard";
 import Contact from "../pages/Contact/index";
 
-import AuthLayout from "../layouts/authLayout";
+// Profile section
+import Profile from "../pages/Profile";
+import Settings from "../pages/Settings";
 
+// Auth section
+import AuthLayout from "../layouts/authLayout";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 
@@ -18,6 +22,11 @@ const AppRoutes = () => {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/contact" element={<Contact />} />
 
+        {/* profile section */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
+
+        <Route path="/logout/:id" />
         {/* Auth */}
         {"Auth"}
         <Route element={<AuthLayout />}>
