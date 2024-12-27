@@ -56,7 +56,7 @@ export default function Navbar() {
 
   return (
     <Disclosure as="nav" className="bg-gray-800 fixed top-0 w-full z-50 ">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1280px] px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button*/}
@@ -122,7 +122,6 @@ export default function Navbar() {
                   <BellIcon aria-hidden="true" className="size-6" />
                 </button>
 
-                {/* <span>{name}</span> */}
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
