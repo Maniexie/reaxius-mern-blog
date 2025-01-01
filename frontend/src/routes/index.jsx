@@ -10,11 +10,13 @@ import Settings from "../pages/Settings";
 
 // Dashboard Post
 import DashboardPost from "../pages/Dashboard/post";
+import DashboardPostNew from "../pages/Dashboard/postnew";
 
 // Auth section
 import AuthLayout from "../layouts/authLayout";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import ProtectedRoute from "../services/ProtectedRoute.jsx";
 
 const AppRoutes = () => {
   return (
@@ -22,7 +24,15 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/contact" element={<Contact />} />
 
         {/* profile section */}
@@ -38,7 +48,16 @@ const AppRoutes = () => {
         </Route>
 
         {/* Dashboard Post */}
-        <Route path="/dashboard/post" element={<DashboardPost />} />
+        {/* <ProtectedRoute path="/dashboard/post" element={<DashboardPost />} /> */}
+        <Route
+          path="/dashboard/post"
+          element={
+            <ProtectedRoute>
+              <DashboardPost />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/dashboard/post/new" element={<DashboardPostNew />} />
 
         {/* not found */}
         <Route path="*" element={<App />} />

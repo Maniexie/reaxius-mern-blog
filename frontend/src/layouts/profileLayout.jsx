@@ -1,9 +1,10 @@
 import Navbar from "../components/Navbar";
 
-const profileLayout = () => {
+const profileLayout = ({ children }) => {
   return (
     <div className="mt-16">
       <Navbar />
+      {children}
     </div>
   );
 };

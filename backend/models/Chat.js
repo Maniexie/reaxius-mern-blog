@@ -11,10 +11,35 @@ const chatSchema = new mongoose.Schema({
     ref: "User", // Referensi ke koleksi User
     required: true,
   },
-  message: {
-    type: String,
-    required: true,
-  },
+  message: [
+    {
+      sender_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User", // Referensi ke koleksi User
+        required: true,
+      },
+      text: {
+        type: String,
+        // required: true,
+        trim: true,
+        default: "",
+      },
+      media: {
+        type: String,
+        // required: true,
+        default: "",
+      },
+      media_type: {
+        type: String,
+        enum: ["image", "video"],
+        default: "",
+      },
+      timestamp: {
+        type: Date,
+        default: Date.now,
+      },
+    },
+  ],
   timestamp: {
     type: Date,
     default: Date.now,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 export default function Example() {
   const [currentText, setCurrentText] = useState(0);
@@ -61,15 +62,18 @@ export default function Example() {
               Siap untuk menemukan tawa yang sudah lama hilang?
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
+              <Link
+                to="/login"
                 className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Mulai Sekarang
-              </a>
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
+              </Link>
+              <Link
+                to="/about"
+                className="text-sm/6 font-semibold text-gray-900"
+              >
                 Pelajari Lebih Lanjut <span aria-hidden="true">→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

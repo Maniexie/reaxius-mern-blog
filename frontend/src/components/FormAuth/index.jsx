@@ -53,7 +53,7 @@ export default function FormAuth({ type = "login" }) {
           email: formData.email,
           password: formData.password,
         });
-        navigate("/");
+        navigate("/dashboard");
       } else if (type === "register") {
         const response = await register({
           name: formData.name,
