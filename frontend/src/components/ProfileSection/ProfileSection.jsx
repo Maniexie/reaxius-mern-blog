@@ -69,7 +69,9 @@ const ProfileSection = () => {
   };
 
   useEffect(() => {
+    const response = await updateDataUser();
     console.log("userData:", userData);
+    setUserData
   });
 
   if (!userData) {
