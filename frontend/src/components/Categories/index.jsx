@@ -8,6 +8,7 @@ import {
   TiBatteryCharge,
   TiCamera,
 } from "react-icons/ti";
+import { Link } from "react-router-dom";
 
 const Categories = () => {
   return (
@@ -21,10 +22,12 @@ const Categories = () => {
         </p>
         <div className="grid md:grid-cols-3 py-12 gap-4">
           <CategoryCard icon={<BsVectorPen size={30} />} title={"Design"} />
+          {/* <Link to="/login"> */}
           <CategoryCard
             icon={<TiHtml5 size={30} />}
             title={"Web Development"}
           />
+          {/* </Link> */}
           <CategoryCard icon={<TiMicrophone size={30} />} title={"Marketing"} />
           <CategoryCard icon={<TiBriefcase size={30} />} title={"Business"} />
           <CategoryCard
