@@ -12,6 +12,9 @@ import Settings from "../pages/Settings";
 import DashboardPost from "../pages/Dashboard/post";
 import DashboardPostNew from "../pages/Dashboard/postnew";
 
+//Chat section
+import Chat from "../pages/Chat/index";
+
 // Auth section
 import AuthLayout from "../layouts/authLayout";
 import Login from "../pages/Auth/Login";
@@ -39,6 +42,9 @@ const AppRoutes = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/logout/:id" />
+
+        {/* CHAT */}
+        <Route path="/chats" element={<Chat />} />
 
         {/* Auth */}
         {"Auth"}

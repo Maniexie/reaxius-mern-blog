@@ -111,16 +111,16 @@ export default function Navbar() {
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <div className="flex space-x-4">
-              <Link
-                to="/dashboard"
-                className="text-sm font-semibold leading-6 text-gray-300 hover:bg-gray-700 hover:text-white"
-              >
-                Dashboard
-              </Link>
-            </div>
             {isLoggedIn ? (
               <>
+                <div className="flex space-x-4">
+                  <Link
+                    to="/dashboard"
+                    className="text-sm font-semibold leading-6 text-gray-300 hover:bg-gray-700 hover:text-white"
+                  >
+                    Dashboard
+                  </Link>
+                </div>
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -164,13 +164,21 @@ export default function Navbar() {
                       </Link>
                     </MenuItem>
                     <MenuItem>
-                      <Button
+                      <Link
+                        to="/chats"
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
+                      >
+                        Chat
+                      </Link>
+                    </MenuItem>
+                    <MenuItem>
+                      <Link
                         onClick={handleLogout}
                         to="/logout"
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 data-[focus]:outline-none"
                       >
                         Sign out
-                      </Button>
+                      </Link>
                     </MenuItem>
                   </MenuItems>
                 </Menu>

@@ -1,3 +1,5 @@
+import * as React from "react";
+
 /**
  * Modal component for editing profile picture.
  *
@@ -8,7 +10,6 @@
  * @param {function} setUserData - Function to update the user data object.
  */
 
-import React, { useEffect } from "react";
 const ModalProfilePicture = ({
   isOpen,
   onClose,
@@ -33,7 +34,7 @@ const ModalProfilePicture = ({
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     return () => {
       if (userData.profile_picture) {
         URL.revokeObjectURL(userData.profile_picture);
