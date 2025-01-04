@@ -1,4 +1,4 @@
-import postData from "../../dummy/post";
+import { getPost } from "../../api/post";
 
 // export const CommentForm = ({ postId, addComment }) => {
 export const CommentForm = ({ postId, addComment }) => {
@@ -8,7 +8,7 @@ export const CommentForm = ({ postId, addComment }) => {
       const newComment = {
         id: Date.now(), // Menggunakan timestamp sebagai ID unik
         content: e.target.value,
-        author: postData.find((post) => post.id === postId).author, // Replace with dynamic user data
+        author: getPost.find((post) => post.id === postId).author, // Replace with dynamic user data
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };

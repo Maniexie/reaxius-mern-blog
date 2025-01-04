@@ -1,5 +1,19 @@
 const Comment = require("../models/Comment");
 
+const getComment = async (req, res) => {
+  try {
+    const comment = await Comment.findById(req.params.id);
+    res.status(200).json(comment);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const getCommentById = async (req, res) => {
+  const comment = await Comment.findById(req.params.id);
+  res.status(200).json(comment);
+};
+
 const createComment = async (req, res) => {
   try {
     const newComment = await Comment.create(req.body);
@@ -29,4 +43,10 @@ const updateComment = async (req, res) => {
   }
 };
 
-module.exports = { createComment, deleteComment, updateComment };
+module.exports = {
+  createComment,
+  deleteComment,
+  updateComment,
+  getComment,
+  getCommentById,
+};
